@@ -9,7 +9,9 @@ matrix:
   allow_failures:
     - php: hhvm
 before_script:
-  - php -dmemory_limit=-1 $(which composer) install --no-interaction --prefer-dist
+  - echo "memory_limit=-1" >> ~/.phpenv/versions/$(phpenv version-name)/etc/conf.d/travis.ini
+  - php -i | grep memory_limit
+  - composer install --no-interaction --prefer-dist
 script:
   - vendor/bin/phpunit --coverage-clover=coveralls.clover
   - vendor/bin/phpcs -p --standard=PSR2 --ignore=vendor/,Tests/app/ ./
