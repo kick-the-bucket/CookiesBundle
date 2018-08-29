@@ -7,10 +7,10 @@ parameters:
 
 services:
     ongr_cookie.injector:
-        class: %ongr_cookie.injector.class%
+        class: "%ongr_cookie.injector.class%"
 
     ongr_cookie.listener:
-        class: %ongr_cookie.listener.class%
+        class: "%ongr_cookie.listener.class%"
         calls:
             - [ setCookieInjector, [ "@ongr_cookie.injector" ] ]
         tags:
