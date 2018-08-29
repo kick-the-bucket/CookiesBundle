@@ -9,7 +9,7 @@ matrix:
   allow_failures:
     - php: hhvm
 before_script:
-  - composer install --no-interaction --prefer-dist
+  - php -dmemory_limit=-1 $(which composer) install --no-interaction --prefer-dist
 script:
   - vendor/bin/phpunit --coverage-clover=coveralls.clover
   - vendor/bin/phpcs -p --standard=PSR2 --ignore=vendor/,Tests/app/ ./
